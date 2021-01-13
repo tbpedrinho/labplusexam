@@ -1,15 +1,14 @@
-import mongoose, {Document, Model} from 'mongoose';
+import mongoose, { Document, Model } from 'mongoose';
 
 export interface Labs {
-    _id?: string;
-    name: string;
-    addr: string;
-    status: boolean;
+  _id?: string;
+  name: string;
+  addr: string;
+  status: boolean;
 }
 
 const schema = new mongoose.Schema(
   {
-    
     name: { type: String, require: true },
     address: { type: String, require: true },
     status: { type: Boolean, required: true },
@@ -25,5 +24,5 @@ const schema = new mongoose.Schema(
   }
 );
 
-interface LabsModel extends Omit<Labs,'_id'>, Document {}
+interface LabsModel extends Omit<Labs, '_id'>, Document {}
 export const Labs: Model<LabsModel> = mongoose.model('Labs', schema);
