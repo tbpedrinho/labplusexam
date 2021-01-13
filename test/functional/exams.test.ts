@@ -1,11 +1,18 @@
-describe('Beach exams funcitional tests', () => {
-  it('should return a exam with just a few times', async () => {
-    const { body, status } = await global.testRequest.get('/exams');
-    expect(status).toBe(200);
-    expect(body).toEqual({
-      name: 'Glicose',
-      address: 'Análise Clínica',
-      status: true,
+import {Exams} from '@src/models/exams';
+
+describe('Beach functional tests', () => {
+  beforeAll(async()=>await Exams.deleteMany({}));
+  describe('When creating a exam', () => {
+    it('should return a exam', async () => {
+      const newExam = {
+        name: 'Fleury',
+        tipo: 'Analises Clinicas',
+        status: true,
+      };
+
+      const response = await global.testRequest.post('/exams').send(newExam);
+      expect(response.status).toBe(201);
+      expect(response.body).toEqual(expect.objectContaining(newExam));
     });
   });
 });

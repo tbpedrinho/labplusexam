@@ -1,10 +1,13 @@
-import { Controller, Get } from '@overnightjs/core';
+import { Controller, Get, Post } from '@overnightjs/core';
 import { Response, Request } from 'express';
+import {Exams} from '@src/models/exams';
 
 @Controller('exams')
 export class ExamsController {
-  @Get('')
-  public getAllExam(req: Request, res: Response): void {
-    res.send({ name: 'Glicose', address: 'Análise Clínica', status: true });
-  }
+  @Post('')
+  public async createExams (req: Request, res: Response):Promise<void>{
+    const exam = new Exams(req.body);
+    const result = await exam.save();
+    res.status(201).send(result);
+}
 }
