@@ -1,10 +1,11 @@
 import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
+import * as http from 'http';
 import { ExamsController } from '@src/controllers/exams';
 import { LabsController } from '@src/controllers/labs';
 import { Application } from 'express';
-import cors from 'cors';
+
 import * as database from '@src/database';
 import logger from './logger';
 
