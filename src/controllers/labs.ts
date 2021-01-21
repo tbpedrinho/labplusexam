@@ -22,7 +22,7 @@ export class LabsController {
   }
   
   @Get('/status/active')
-  public async getLabsbyStatusActive(req: Request, res: Response): Promise<void>{
+  public async getLabsByStatusActive(req: Request, res: Response): Promise<void>{
     try {
       const result = await Labs.find({'status':true});
       res.status(201).send(result);
@@ -36,7 +36,7 @@ export class LabsController {
   }
     
   @Get('/status/inactive')
-  public async getLabsbyStatusInactive(req: Request, res: Response): Promise<void>{
+  public async getLabsByStatusInactive(req: Request, res: Response): Promise<void>{
     try {
       const result = await Labs.find({'status':false});
       res.status(201).send(result);
